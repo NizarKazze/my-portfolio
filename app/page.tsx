@@ -1,13 +1,25 @@
 "use client"
 
-import Galaxy from './Galaxy';
+import Galaxy from '../components/hero/Galaxy';
+import { useTyperWriter } from '@/hooks/TypeWriter';
+import WaveCarousel from '@/components/skills/Skills';
+import { memo } from "react";
 
-export default function Home() {
+const MemoGalaxy = memo(Galaxy);
+
+const Hero = () => {
+  const text = useTyperWriter({
+    words: [
+      "Bienvenido a mi portafolio",
+      "Construyo experiencias web modernas",
+      "React + TypeScript 🚀",
+    ],
+  });
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <div style={{ width: '100%', height: '600px', position: 'relative' }}>
-          <Galaxy 
+    <div id='hero-content' className='w-full p-2'>
+      <main id='galaxy-background' className="flex flex-1 w-full flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+        <div style={{ width: '100%', height: '500px', position: 'relative' }}>
+          <MemoGalaxy 
             mouseRepulsion={false}
             mouseInteraction
             density={3}
@@ -22,7 +34,25 @@ export default function Home() {
             speed={1}
         />
         </div>
+        <div>
+          <div className='hero-title'>
+            {text}
+          </div>
+        </div>
       </main>
+    </div>
+  )
+}
+
+export default function Home() {
+  return (
+
+    <div id='home-content' className='bg-white'>
+      <Hero></Hero>
+      <div className='skills'>
+        <h2>Skills</h2>
+        <WaveCarousel></WaveCarousel>
+      </div>
     </div>
   );
 }

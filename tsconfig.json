@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "app/Galaxy.js"  ],
+, "components/hero/Galaxy.js"  ],
   "exclude": ["node_modules"]
 }

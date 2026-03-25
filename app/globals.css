@@ -24,3 +24,22 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+#galaxy-background {
+  border-radius: 20px
+}
+
+#hero-contnet {
+  animation: expandFromCenter 0.8s ease-out forwards;
+  transform-origin: center;
+}
+@keyframes expandFromCenter {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
