@@ -1,4 +1,5 @@
 import { GridItem } from "./projectsData";
+import InteractivePhone from "../Phone";
 
 type PopupProps = {
   item: GridItem;
@@ -42,10 +43,7 @@ const Popup: React.FC<PopupProps> = ({ item, onClose }) => {
 
         {/* COLUMNA DERECHA */}
         <div className="relative">
-          <img
-            src={`${item.img}?auto=format&fit=crop&w=1200`}
-            className="w-full h-full object-cover"
-          />
+            
         </div>
 
         {/* BOTÓN CERRAR */}
