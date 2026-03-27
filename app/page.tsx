@@ -7,6 +7,7 @@ import { memo } from "react";
 import NavBar from '@/components/NavBar';
 import { Montserrat } from 'next/font/google';
 import Aboutme from '@/components/Aboutme';
+import Phone3D from '@/components/Phone';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -25,7 +26,7 @@ const Hero = () => {
   });
 
   return (
-    <div id="hero-content" className="w-full">
+    <div id="hero-content" className="w-full p-2">
       <main
         id="galaxy-background"
         className="relative flex w-full flex-col bg-white dark:bg-black"
@@ -50,11 +51,6 @@ const Hero = () => {
           {/* TEXTO CENTRADO SOBRE EL GALAXY */}
           <div className="absolute pointer-events-none inset-0">
 
-            {/* NAVBAR */}
-            <div className="absolute top-10 left-0 pointer-events-auto w-full flex items-center justify-center">
-              <NavBar />
-            </div>
-
             {/* HERO CENTER */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="hero-title flex flex-col items-center gap-4 max-w-md">
@@ -67,10 +63,16 @@ const Hero = () => {
                 <div className="text-xl leading-tight w-full text-left">
                   {text}
                 </div>
+                <div className='btn-group flex gap-4'>
+                  <button className="bg-white mt-4 text-black px-6 py-3 text-sm rounded-3xl">
+                    View Projects
+                  </button>
+                  
+                  <button className="bg-white mt-4 text-black px-6 py-3 text-sm rounded-3xl">
+                    Download CV
+                  </button>
+                </div>
 
-                <button className="bg-white mt-4 text-black px-6 py-3 text-sm rounded-3xl">
-                  Download CV
-                </button>
 
               </div>
             </div>
@@ -86,14 +88,16 @@ export default function Home() {
   return (
 
     <div id='home-content' className={`${montserrat.className} bg-white`}>
+      <NavBar></NavBar>
       <Hero></Hero>
       <div>
         <Aboutme></Aboutme>
       </div>
       <div className='skills'>
 
-        <h2>Skills</h2>
         <WaveCarousel></WaveCarousel>
+
+        <Phone3D></Phone3D>
 
       </div>
     </div>

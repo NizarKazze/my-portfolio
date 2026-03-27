@@ -1,6 +1,6 @@
 const Aboutme = () => {
     return (
-        <div id="about-me-content" className="grid grid-cols-2 gap-4">
+        <div id="about-me-content" className="grid grid-cols-2 gap-4 px-8">
             <div className="p-8 mt-12">
                 <h2 className="mb-6 text-3xl">About me</h2>
                 <p className="mb-2">I’m Nizar Kazze, a Full Stack Web Developer born in Ibiza. I’m passionate about building modern, efficient, 
