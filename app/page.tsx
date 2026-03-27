@@ -8,6 +8,7 @@ import NavBar from '@/components/NavBar';
 import { Montserrat } from 'next/font/google';
 import Aboutme from '@/components/Aboutme';
 import Phone3D from '@/components/Phone';
+import Projects from '@/components/projects/Projects';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -96,7 +97,7 @@ export default function Home() {
       <div className='skills'>
 
         <WaveCarousel></WaveCarousel>
-
+        <Projects></Projects>
         <Phone3D></Phone3D>
 
       </div>
