@@ -6,6 +6,7 @@ import WaveCarousel from '@/components/skills/Skills';
 import { memo } from "react";
 import NavBar from '@/components/NavBar';
 import { Montserrat } from 'next/font/google';
+import Aboutme from '@/components/Aboutme';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -86,9 +87,14 @@ export default function Home() {
 
     <div id='home-content' className={`${montserrat.className} bg-white`}>
       <Hero></Hero>
+      <div>
+        <Aboutme></Aboutme>
+      </div>
       <div className='skills'>
+
         <h2>Skills</h2>
         <WaveCarousel></WaveCarousel>
+
       </div>
     </div>
   );
