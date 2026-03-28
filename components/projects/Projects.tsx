@@ -8,7 +8,7 @@ const Grid: React.FC = () => {
   return (
     <>
       {/* GRID */}
-      <div className="grid grid-cols-6 grid-rows-10 gap-3 h-screen p-4">
+      <div className="grid grid-cols-6 grid-rows-10 gap-3 h-screen">
         {projectitems.map((item) => (
           <div
             key={item.id}
@@ -39,9 +39,11 @@ const Grid: React.FC = () => {
 
 const Projects = () => {
     return (
-        <div id="projects-content">
-            <h2>Projects</h2>
-            <Grid></Grid>
+        <div id="projects-content" className="px-10">
+            <h2 className="text-3xl">My Projects</h2>
+            <div id="grid-container" className="mt-16">
+                <Grid></Grid>
+            </div>
         </div>
     )
 }

@@ -7,8 +7,8 @@ import { memo } from "react";
 import NavBar from '@/components/NavBar';
 import { Montserrat } from 'next/font/google';
 import Aboutme from '@/components/Aboutme';
-import Phone3D from '@/components/Phone';
 import Projects from '@/components/projects/Projects';
+import ContactSection from '@/components/ContactForm';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -98,7 +98,7 @@ export default function Home() {
 
         <WaveCarousel></WaveCarousel>
         <Projects></Projects>
-        <Phone3D></Phone3D>
+        <ContactSection></ContactSection>
 
       </div>
     </div>
