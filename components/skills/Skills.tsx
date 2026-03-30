@@ -132,7 +132,7 @@ function WaveCarousel() {
 const SkillsSection = () => {
   return (
     <div id="skills-container" className="mt-16">
-      <h2 className="text-center text-3xl">Skills</h2>
+      <h2 className="text-center text-5xl">Skills</h2>
       <WaveCarousel></WaveCarousel>
     </div>
   )

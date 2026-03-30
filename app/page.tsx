@@ -5,16 +5,16 @@ import { useTyperWriter } from '@/hooks/TypeWriter';
 import WaveCarousel from '@/components/skills/Skills';
 import { memo } from "react";
 import NavBar from '@/components/NavBar';
-import { Montserrat } from 'next/font/google';
+import { Raleway } from 'next/font/google';
 import Aboutme from '@/components/Aboutme';
 import Projects from '@/components/projects/Projects';
 import ContactSection from '@/components/ContactForm';
 
-const montserrat = Montserrat({
+const raleway = Raleway({
   subsets: ['latin'],
-  variable: '--font-montserrat',
+  variable: '--font-raleway',
+  weight: ['300', '400', '500', '600', '700'],
 });
-
 const MemoGalaxy = memo(Galaxy);
 
 const Hero = () => {
@@ -32,7 +32,6 @@ const Hero = () => {
         id="galaxy-background"
         className="relative flex w-full flex-col bg-white dark:bg-black"
       >
-        {/* GALAXY BACKGROUND */}
         <div style={{ width: '100%', height: '700px', position: 'relative' }}>
           <MemoGalaxy
             mouseRepulsion
@@ -49,21 +48,20 @@ const Hero = () => {
             speed={1}
           />
 
-          {/* TEXTO CENTRADO SOBRE EL GALAXY */}
           <div className="absolute pointer-events-none inset-0">
 
-            {/* HERO CENTER */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="hero-title flex flex-col items-center gap-4 max-w-md">
+              <div className="hero-title flex flex-col items-center gap-4 max-w-md text-center">
 
                 <div className='w-full'>
-                  <p className='text-3xl text-gray-200'>Hi I'm</p>
-                  <h1 className='text-4xl font-semibold '>Nizar Kazze</h1>
+                  <p className='text-5xl text-gray-200 font-semibold'>Hi I'm</p>
+                  <h1 className='text-5xl font-semibold'>Nizar Kazze</h1>
                 </div>
 
-                <div className="text-xl leading-tight w-full text-left">
+                <div className="text-xl leading-tight w-full">
                   {text}
                 </div>
+
                 <div className='btn-group flex gap-4'>
                   <button className="bg-white mt-4 text-black px-6 py-3 text-sm rounded-3xl">
                     View Projects
@@ -74,6 +72,14 @@ const Hero = () => {
                   </button>
                 </div>
 
+                {/* 👇 NUEVA FILA DE DATOS */}
+                <div className="mt-6 text-sm text-gray-300 flex items-center gap-3">
+                  <span>Frontend</span>
+                  <span className="opacity-50">|</span>
+                  <span>Backend</span>
+                  <span className="opacity-50">|</span>
+                  <span>Cloud</span>
+                </div>
 
               </div>
             </div>
@@ -88,7 +94,7 @@ const Hero = () => {
 export default function Home() {
   return (
 
-    <div id='home-content' className={`${montserrat.className} bg-white`}>
+    <div id='home-content' className={`${raleway.className} bg-white`}>
       <NavBar></NavBar>
       <Hero></Hero>
       <div>
