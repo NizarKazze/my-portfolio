@@ -37,7 +37,7 @@ const ITEMS = Array.from(
 );
 const LOOP_W = IMAGES.length * CARD_STEP;
 
-export default function WaveCarousel() {
+function WaveCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
   const offsetRef = useRef(LOOP_W);
   const rafRef = useRef<number>(0);
@@ -128,3 +128,14 @@ export default function WaveCarousel() {
     </div>
   );
 }
+
+const SkillsSection = () => {
+  return (
+    <div id="skills-container" className="mt-16">
+      <h2 className="text-center text-3xl">Skills</h2>
+      <WaveCarousel></WaveCarousel>
+    </div>
+  )
+}
+
+export default SkillsSection
