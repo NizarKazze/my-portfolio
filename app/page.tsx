@@ -9,6 +9,7 @@ import { Raleway } from 'next/font/google';
 import Aboutme from '@/components/Aboutme';
 import Projects from '@/components/projects/Projects';
 import ContactSection from '@/components/ContactForm';
+import InteractivePhone from '@/components/Phone';
 
 const raleway = Raleway({
   subsets: ['latin'],
@@ -104,6 +105,8 @@ export default function Home() {
 
         <WaveCarousel></WaveCarousel>
         <Projects></Projects>
+                <InteractivePhone></InteractivePhone>
+
         <ContactSection></ContactSection>
 
       </div>

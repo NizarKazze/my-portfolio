@@ -1,57 +1,49 @@
-import React, { Suspense, useEffect, useRef } from 'react';
+import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { useGLTF, Html, OrbitControls, ContactShadows, Environment } from '@react-three/drei';
 import * as THREE from 'three';
+import { useThree } from '@react-three/fiber';
 
 const SCALE_XY = 15;
+const PX_WIDTH  = 390;
+const PX_HEIGHT = 780;
 
-const PX_WIDTH = 390;
-const BEZEL = 0.08;
-
-const ORIGINAL = { x: 21.825, y: 42.857, z: 2.338 };
-
-const Z_FRONT = ORIGINAL.z / 2 + 0.05;
-const Y_OFFSET = 2; // ← sube o baja este número para centrar verticalmente
-
-const SCREEN_W = ORIGINAL.x * SCALE_XY * (1 - BEZEL * 2);
-const SCREEN_H = ORIGINAL.y * SCALE_XY * (1 - BEZEL * 2);
-const DISTANCE_FACTOR = PX_WIDTH / SCREEN_W;
-const PX_HEIGHT = (SCREEN_H / SCREEN_W) * PX_WIDTH;
-
-function Model({ url }: { url: string }) {
+function Model({ url, distanceFactor }: { url: string; distanceFactor: number }) {
+  const { camera } = useThree();
   const { scene } = useGLTF(url);
-  const groupRef = useRef<THREE.Group>(null);
+  const innerRef = useRef<THREE.Group>(null);
 
   useEffect(() => {
-    const box = new THREE.Box3().setFromObject(scene);
-    const center = new THREE.Vector3();
-    box.getCenter(center);
-    scene.position.set(-center.x, -center.y, -center.z);
-  }, [scene]);
+    if (!innerRef.current) return;
+    innerRef.current.position.set(0.0001, -0.0952, 0.0003);
+    camera.position.set(0, 0, 6.34);
+    camera.lookAt(0, 0, 0);
+    (camera as THREE.PerspectiveCamera).fov = 35;
+    camera.updateProjectionMatrix();
+  }, [scene, camera]);
 
   return (
-    <group ref={groupRef} scale={[SCALE_XY, SCALE_XY, 1]}>
-      <primitive object={scene} />
+    <>
+      <group scale={[SCALE_XY, SCALE_XY, 15]}>
+        <group ref={innerRef}>
+          <primitive object={scene} />
+        </group>
+      </group>
 
       <Html
+        position={[0, 0, 0.09]}
         transform
-        occlude="blender"
-        position={[0, Y_OFFSET, Z_FRONT]}
-        distanceFactor={DISTANCE_FACTOR}
+        distanceFactor={distanceFactor}
         zIndexRange={[1, 10]}
+        occlude={"blender" as any}
       >
-        <div
-          style={{
-            width: `${PX_WIDTH}px`,
-            height: `${PX_HEIGHT}px`,
-            borderRadius: '40px',
-            overflow: 'hidden',
-            background: '#000',
-            outline: '3px solid red',
-          }}
-          onPointerDown={(e) => e.stopPropagation()}
-          onWheel={(e) => e.stopPropagation()}
-        >
+        <div style={{
+          width: `${PX_WIDTH}px`,
+          height: `${PX_HEIGHT}px`,
+          borderRadius: '40px',
+          overflow: 'hidden',
+          background: '#111',
+        }}>
           <iframe
             src="https://www.acoso-escolar.com/"
             width="100%"
@@ -62,22 +54,31 @@ function Model({ url }: { url: string }) {
           />
         </div>
       </Html>
-    </group>
+    </>
   );
 }
 
 export default function InteractivePhone() {
+  const [distanceFactor, setDistanceFactor] = useState(1.36);
+
   return (
-    <div style={{ width: '50vw', height: '100vh' }}>
-      <Canvas camera={{ position: [0, 0, 5], fov: 35 }} style={{ background: '#ffffff' }}>
+    <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
+
+      <Canvas
+        camera={{ position: [0, 0, 6.34], fov: 35 }}
+        style={{ background: '#ffffff' }}
+      >
         <ambientLight intensity={0.6} />
         <pointLight position={[10, 10, 10]} intensity={1} />
         <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} />
 
-        <Suspense fallback={<Html center>Cargando modelo…</Html>}>
+        <Suspense fallback={<Html center>Cargando…</Html>}>
           <Environment preset="city" />
-          <Model url="/phone.glb" />
-          <ContactShadows position={[0, -1.5, 0]} opacity={0.4} scale={10} blur={2.5} far={4} />
+          <Model url="/phone.glb" distanceFactor={distanceFactor} />
+          <ContactShadows
+            position={[0, -1.63, 0]}
+            opacity={0.4} scale={4} blur={2} far={2}
+          />
         </Suspense>
 
         <OrbitControls makeDefault minPolarAngle={Math.PI / 3} maxPolarAngle={Math.PI / 1.5} />
