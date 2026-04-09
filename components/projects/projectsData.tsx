@@ -38,7 +38,7 @@ const projectitems: GridItem[] = [
   {
     id: 2,
     title: "Playa",
-    img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    img: "/FlexoApp.png",
     url: "https://www.acoso-escolar.com/",
     githubUrl: "https://github.com/facebook/react",
     liveUrl: "https://react.dev",

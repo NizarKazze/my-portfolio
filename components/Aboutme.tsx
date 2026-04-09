@@ -4,8 +4,8 @@ const Aboutme = () => {
     const { tokens } = useTheme();
 
     return (
-        <div id="about-me-content" className="grid grid-cols-2 gap-4 px-10">
-            <div className="mt-12">
+        <div id="about-me-content" className="grid grid-cols-1  sm:grid-cols-2 gap-4 px-10">
+            <div className="mt-24">
                 <h2 className="mb-6 text-5xl" style={{ color: tokens.titleColor }}>About me</h2>
                 <p className="mb-2 text-lg">I’m Nizar Kazze, a Full Stack Web Developer born in Ibiza. I’m passionate about building modern, efficient, 
                     and user-friendly web applications.</p>

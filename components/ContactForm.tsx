@@ -22,7 +22,7 @@ const ContactForm = () => {
 
 const ContactSection = () => {
     return (
-        <div id="contact-section" className="px-10 mt-16 flex flex-col align-center justify-center w-2/4">
+        <div id="contact-section" className="px-10 mt-16 flex flex-col align-center justify-center w-full sm:w-2/4 mx-auto">
             <h2 className="text-center text-3xl">Contact me</h2>
             <ContactForm></ContactForm>
         </div>
