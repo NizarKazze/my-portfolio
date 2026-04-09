@@ -10,6 +10,7 @@ import Aboutme from '@/components/Aboutme';
 import Projects from '@/components/projects/Projects';
 import ContactSection from '@/components/ContactForm';
 import InteractivePhone from '@/components/Phone';
+import TechVisualizer from '@/components/projects/3dBallsComponent';
 
 const raleway = Raleway({
   subsets: ['latin'],
@@ -31,7 +32,7 @@ const Hero = () => {
     <div id="hero-content" className="w-full p-2">
       <main
         id="galaxy-background"
-        className="relative flex w-full flex-col bg-white dark:bg-black"
+        className="relative flex w-full flex-col"
       >
         <div style={{ width: '100%', height: '700px', position: 'relative' }}>
           <MemoGalaxy
@@ -54,12 +55,12 @@ const Hero = () => {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="hero-title flex flex-col items-center gap-4 max-w-md text-center">
 
-                <div className='w-full'>
-                  <p className='text-5xl text-gray-200 font-semibold'>Hi I'm</p>
+                <div className='w-full text-white'>
+                  <p className='text-5xl text-gray-200 font-semibold'>HI I'M</p>
                   <h1 className='text-5xl font-semibold'>Nizar Kazze</h1>
                 </div>
 
-                <div className="text-xl leading-tight w-full">
+                <div className="text-xl leading-tight w-full text-white">
                   {text}
                 </div>
 
@@ -73,13 +74,21 @@ const Hero = () => {
                   </button>
                 </div>
 
-                {/* 👇 NUEVA FILA DE DATOS */}
                 <div className="mt-6 text-sm text-gray-300 flex items-center gap-3">
-                  <span>Frontend</span>
+                  <div className='flex flex-col align-center'>
+                    <h4 className='text-2xl'>Projects</h4>
+                    <p className='text-4xl'>11</p>
+                  </div>
                   <span className="opacity-50">|</span>
-                  <span>Backend</span>
+                  <div className='flex flex-col align-center'>
+                    <h4 className='text-2xl'>technologies</h4>
+                    <p className='text-4xl'>19</p>
+                  </div>
                   <span className="opacity-50">|</span>
-                  <span>Cloud</span>
+                  <div className='flex flex-col align-center'>
+                    <h4 className='text-2xl'>Experience</h4>
+                    <p className='text-4xl'>2</p>
+                  </div>
                 </div>
 
               </div>
@@ -105,8 +114,6 @@ export default function Home() {
 
         <WaveCarousel></WaveCarousel>
         <Projects></Projects>
-                <InteractivePhone></InteractivePhone>
-
         <ContactSection></ContactSection>
 
       </div>
