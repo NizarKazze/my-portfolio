@@ -35,6 +35,8 @@ export interface ThemeTokens {
   btnBg: string;
   btnText: string;
   btnBorder: string;
+
+  titleColor: string;
 }
 
 export interface ThemeContextType {
@@ -71,6 +73,8 @@ export const tokens: Record<Theme, ThemeTokens> = {
     btnBg: "#ffffff",
     btnText: "#0d0f14",
     btnBorder: "rgba(0,0,0,0.12)",
+
+    titleColor: "#0d0f14"
   },
 
   dark: {
@@ -96,6 +100,9 @@ export const tokens: Record<Theme, ThemeTokens> = {
     btnBg: "#ffffff",
     btnText: "#080a0f",
     btnBorder: "rgba(255,255,255,0.15)",
+
+    titleColor: "#8b7db7"
+
   },
 };
 

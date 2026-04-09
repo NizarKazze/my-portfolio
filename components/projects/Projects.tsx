@@ -39,7 +39,7 @@ const Grid: React.FC = () => {
 
 const Projects = () => {
     return (
-        <div id="projects-content" className="px-10">
+        <div id="projects-content" className="px-10 mt-24">
             <h2 className="text-3xl">My Projects</h2>
             <div id="grid-container" className="mt-16">
                 <Grid></Grid>

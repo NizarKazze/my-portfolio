@@ -2,6 +2,7 @@ import React from "react";
 import { GridItem } from "./projectsData";
 import Ballpit from "./3dBallsComponent";
 import { X, ExternalLink, Monitor } from "lucide-react";
+import { useTheme } from '@/context/ThemeContext';
 
 type PopupProps = {
   item: GridItem;
@@ -9,17 +10,19 @@ type PopupProps = {
 };
 
 const Popup: React.FC<PopupProps> = ({ item, onClose }) => {
+  const { tokens } = useTheme();
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
       
       {/* Overlay - Desenfoque sutil para centrar la atención */}
       <div
         onClick={onClose}
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity"
+        className="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity bg-zinc-900/80"
       />
 
       {/* Contenedor principal */}
-      <div className="relative w-full max-w-8xl h-[95vh] rounded-[40px] shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] border border-white/10 bg-zinc-900/80 backdrop-blur-2xl overflow-hidden flex flex-col">
+      <div className="relative w-full max-w-8xl h-[95vh] rounded-[40px] shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] border border-white/10 bg-[#080a0f] backdrop-blur-2xl overflow-hidden flex flex-col">
         
         {/* Fondo animado con opacidad reducida para no distraer */}
         <div className="absolute inset-0 z-0 opacity-40">
@@ -43,8 +46,7 @@ const Popup: React.FC<PopupProps> = ({ item, onClose }) => {
         {/* Header con Efecto Cristal */}
         <div className="relative z-10 w-full pt-12 px-8 flex justify-center">
           <div className="flex items-center gap-3 py-2 px-6 bg-white/5 border border-white/10 rounded-full">
-            <Monitor size={18} className="text-blue-400" />
-            <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight">
+            <h2 className="text-xl md:text-2xl font-bold tracking-tight" style={{ color: tokens.heroTextMuted }}>
               {item.title}
             </h2>
           </div>
@@ -53,7 +55,7 @@ const Popup: React.FC<PopupProps> = ({ item, onClose }) => {
         {/* Contenido Principal */}
         <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 md:px-20 text-center">
           
-          <p className="max-w-3xl text-lg md:text-2xl text-zinc-300 leading-relaxed mb-12 font-medium">
+          <p className="max-w-3xl text-lg md:text-xl text-zinc-300 leading-relaxed mb-12 font-medium">
             {item.description}
           </p>
 

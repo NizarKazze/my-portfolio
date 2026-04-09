@@ -12,6 +12,7 @@ import ContactSection from '@/components/ContactForm';
 import InteractivePhone from '@/components/Phone';
 import TechVisualizer from '@/components/projects/3dBallsComponent';
 import { useTheme } from '@/context/ThemeContext';
+import TimelineStepper from '@/components/timeLine/TimeLine';
 
 const raleway = Raleway({
   subsets: ['latin'],
@@ -25,7 +26,6 @@ const Hero = () => {
   const { tokens } = useTheme();
   const text = useTyperWriter({
     words: [
-      "Hi, I'm a Full Stack Developer. Welcome to my portfolio",
       "Full Stack Developer crafting scalable web applications from concept to deployment",
       "I build modern, responsive, and user-focused digital experiences across front-end and back-end",
     ],
@@ -34,7 +34,7 @@ const Hero = () => {
   return (
     <div id="hero-content" className="w-full p-2">
       <main id="galaxy-background" className="relative flex w-full flex-col">
-        <div style={{ width: '100%', height: '700px', position: 'relative' }}>
+        <div style={{ width: '100%', height: '700px', position: 'relative', display: 'flex', flexDirection: 'column' }}>
           <MemoGalaxy
             mouseRepulsion
             mouseInteraction
@@ -50,77 +50,91 @@ const Hero = () => {
             speed={1}
           />
 
-          <div className="absolute pointer-events-none inset-0">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="hero-title flex flex-col items-center gap-4 max-w-md text-center">
+          {/* Texto alineado a la izquierda */}
+          <div className="absolute pointer-events-none inset-0 flex flex-col justify-between">
+            <div className="flex flex-col items-start gap-4 px-16 pt-24">
 
-                <div className="w-full">
-                  <p
-                    className="text-5xl font-semibold"
-                    style={{ color: tokens.heroTextMuted }}
-                  >
-                    HI I'M
-                  </p>
-                  <h1
-                    className="text-5xl font-semibold"
-                    style={{ color: tokens.heroText }}
-                  >
-                    Nizar Kazze
-                  </h1>
-                </div>
-
-                <div
-                  className="text-xl leading-tight w-full"
-                  style={{ color: tokens.heroText }}
-                >
-                  {text}
-                </div>
-
-                <div className="btn-group flex gap-4">
-                  <button
-                    className="mt-4 px-6 py-3 text-sm rounded-3xl transition-opacity hover:opacity-80"
-                    style={{
-                      backgroundColor: tokens.btnBg,
-                      color: tokens.btnText,
-                      border: `1px solid ${tokens.btnBorder}`,
-                    }}
-                  >
-                    View Projects
-                  </button>
-
-                  <button
-                    className="mt-4 px-6 py-3 text-sm rounded-3xl transition-opacity hover:opacity-80"
-                    style={{
-                      backgroundColor: tokens.btnBg,
-                      color: tokens.btnText,
-                      border: `1px solid ${tokens.btnBorder}`,
-                    }}
-                  >
-                    Download CV
-                  </button>
-                </div>
-
-                <div
-                  className="mt-6 text-sm flex items-center gap-3"
+              <div>
+                <p
+                  className="text-xl font-medium tracking-widest uppercase"
                   style={{ color: tokens.heroTextMuted }}
                 >
-                  <div className="flex flex-col items-center">
-                    <h4 className="text-2xl" style={{ color: tokens.heroTextMuted }}>Projects</h4>
-                    <p className="text-4xl" style={{ color: tokens.heroTextMuted }}>11</p>
-                  </div>
-                  <span style={{ opacity: 0.4 }}>|</span>
-                  <div className="flex flex-col items-center">
-                    <h4 className="text-2xl" style={{ color: tokens.heroTextMuted }}>Technologies</h4>
-                    <p className="text-4xl" style={{ color: tokens.heroTextMuted }}>19</p>
-                  </div>
-                  <span style={{ opacity: 0.4 }}>|</span>
-                  <div className="flex flex-col items-center">
-                    <h4 className="text-2xl" style={{ color: tokens.heroTextMuted }}>Experience</h4>
-                    <p className="text-4xl" style={{ color: tokens.heroTextMuted }}>2</p>
-                  </div>
-                </div>
-
+                  Hi, I'm
+                </p>
+                <h1
+                  className="text-5xl font-semibold"
+                  style={{ color: tokens.heroText }}
+                >
+                  Nizar Kazze
+                </h1>
               </div>
+
+              <div
+                className="text-lg leading-relaxed max-w-md"
+                style={{ color: tokens.heroTextMuted }}
+              >
+                {text}
+              </div>
+
+              <div className="btn-group flex gap-4">
+                <button
+                  className="mt-2 px-6 py-3 text-sm rounded-3xl transition-opacity hover:opacity-80"
+                  style={{
+                    backgroundColor: 'rgba(255,255,255,0.07)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    color: 'white',
+                    border: `1px solid rgba(255,255,255,0.18)`,
+                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1)',
+                  }}
+                >
+                  View Projects
+                </button>
+
+                <button
+                  className="mt-2 px-6 py-3 text-sm rounded-3xl transition-opacity hover:opacity-80"
+                  style={{
+                    backgroundColor: tokens.btnBg,
+                    color: tokens.btnText,
+                    border: `1px solid ${tokens.btnBorder}`,
+                  }}
+                >
+                  Download CV
+                </button>
+              </div>
+            </div>
+
+            {/* Stats bar al fondo */}
+            <div
+              className="flex w-full"
+              style={{ borderTop: `1px solid rgba(255,255,255,0.07)` }}
+            >
+              {[
+                { label: 'Projects', value: 11 },
+                { label: 'Technologies', value: 19 },
+                { label: 'Experience', value: 2 },
+              ].map((stat, i) => (
+                <div
+                  key={stat.label}
+                  className="flex-1 flex flex-col gap-1 px-16 py-5"
+                  style={{
+                    borderLeft: i > 0 ? `1px solid rgba(255,255,255,0.07)` : 'none',
+                  }}
+                >
+                  <span
+                    className="text-xs uppercase tracking-widest"
+                    style={{ color: tokens.heroTextMuted }}
+                  >
+                    {stat.label}
+                  </span>
+                  <span
+                    className="text-5xl font-medium"
+                    style={{ color: tokens.heroText }}
+                  >
+                    {stat.value}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -147,6 +161,7 @@ export default function Home() {
       <div style={{ backgroundColor: tokens.bg }}>
         <Aboutme />
       </div>
+      <TimelineStepper></TimelineStepper>
       <div
         className="skills"
         style={{ backgroundColor: tokens.bg }}
