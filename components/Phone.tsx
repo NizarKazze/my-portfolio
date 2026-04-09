@@ -1,14 +1,18 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { useGLTF, Html, OrbitControls, ContactShadows, Environment } from '@react-three/drei';
+// Phone.tsx
+import React, { Suspense, useEffect, useRef } from 'react';
+import { Canvas, useThree } from '@react-three/fiber';
+import {
+  useGLTF,
+  Html,
+  OrbitControls,
+  ContactShadows,
+  Environment,
+} from '@react-three/drei';
 import * as THREE from 'three';
-import { useThree } from '@react-three/fiber';
 
 const SCALE_XY = 15;
-const PX_WIDTH  = 390;
-const PX_HEIGHT = 780;
 
-function Model({ url, distanceFactor }: { url: string; distanceFactor: number }) {
+function Model({ url }: { url: string }) {
   const { camera } = useThree();
   const { scene } = useGLTF(url);
   const innerRef = useRef<THREE.Group>(null);
@@ -22,48 +26,65 @@ function Model({ url, distanceFactor }: { url: string; distanceFactor: number })
     camera.updateProjectionMatrix();
   }, [scene, camera]);
 
-  return (
-    <>
-      <group scale={[SCALE_XY, SCALE_XY, 15]}>
-        <group ref={innerRef}>
-          <primitive object={scene} />
-        </group>
+return (
+  <>
+    <group scale={[SCALE_XY, SCALE_XY, 15]}>
+      <group ref={innerRef}>
+        <primitive object={scene} />
       </group>
+    </group>
 
-      <Html
-        position={[0, 0, 0.09]}
-        transform
-        distanceFactor={distanceFactor}
-        zIndexRange={[1, 10]}
-        occlude={"blender" as any}
-      >
-        <div style={{
-          width: `${PX_WIDTH}px`,
-          height: `${PX_HEIGHT}px`,
-          borderRadius: '40px',
-          overflow: 'hidden',
-          background: '#111',
-        }}>
-          <iframe
-            src="https://www.acoso-escolar.com/"
-            width="100%"
-            height="100%"
-            title="Sitio web"
-            style={{ border: 'none', display: 'block' }}
-            loading="lazy"
-          />
-        </div>
-      </Html>
-    </>
-  );
+<Html
+  position={[0, 0, 0.1]}
+  transform
+  distanceFactor={1.98}
+  zIndexRange={[1, 10]}
+  occlude
+>
+  <div style={{
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+  }}>
+    <div style={{
+      width: '266px',
+      height: '529px',
+      borderRadius: '32px',
+      background: '#111',
+      clipPath: 'inset(0px round 32px)',
+      overflow: 'hidden',
+      transform: 'translate(-50%, -50%)',
+    }}>
+      <iframe
+        src="https://www.acoso-escolar.com/"
+        title="Sitio web"
+        loading="lazy"
+        style={{
+          border: 'none',
+          display: 'block',
+          width: '390px',
+          height: '780px',
+          zoom: 266 / 390,
+        }}
+      />
+    </div>
+  </div>
+</Html>
+  </>
+);
 }
-
 export default function InteractivePhone() {
-  const [distanceFactor, setDistanceFactor] = useState(1.36);
+  const containerRef = useRef<HTMLDivElement>(null!);
 
   return (
-    <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
-
+    <div
+      ref={containerRef}
+      style={{
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+      }}
+    >
       <Canvas
         camera={{ position: [0, 0, 6.34], fov: 35 }}
         style={{ background: '#ffffff' }}
@@ -74,14 +95,25 @@ export default function InteractivePhone() {
 
         <Suspense fallback={<Html center>Cargando…</Html>}>
           <Environment preset="city" />
-          <Model url="/phone.glb" distanceFactor={distanceFactor} />
+
+          <Model
+            url="/phone.glb"
+          />
+
           <ContactShadows
             position={[0, -1.63, 0]}
-            opacity={0.4} scale={4} blur={2} far={2}
+            opacity={0.4}
+            scale={4}
+            blur={2}
+            far={2}
           />
         </Suspense>
 
-        <OrbitControls makeDefault minPolarAngle={Math.PI / 3} maxPolarAngle={Math.PI / 1.5} />
+        <OrbitControls
+          makeDefault
+          minPolarAngle={Math.PI / 3}
+          maxPolarAngle={Math.PI / 1.5}
+        />
       </Canvas>
     </div>
   );

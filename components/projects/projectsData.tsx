@@ -3,7 +3,6 @@ import React from "react";
 export type Technology = {
   name: string;
   icon: string;
-  percentage: number;
 };
 
 export type GridItem = {
@@ -29,10 +28,11 @@ const projectitems: GridItem[] = [
     className: "col-span-2 row-span-7",
     description: "Desarrollo de una plataforma web para una asociación contra el acoso escolar en Ibiza y Formentera, orientada a ofrecer información, recursos y contacto para personas afectadas. La aplicación cuenta con un backend en PHP para la gestión de datos y un frontend moderno desarrollado con React (Vite), utilizando Tailwind CSS para un diseño responsive y accesible. El proyecto combina rendimiento, usabilidad y compromiso social, facilitando el acceso a ayuda y concienciación sobre el acoso escolar.",
     tecnologias: [
-      { name: "React", icon: "/py-background.png", percentage: 70 },
-      { name: "Vite", icon: "/vite-backgound.png", percentage: 30 },
-      { name: "Php", icon: "/vite-backgound.png", percentage: 30 },
-      { name: "Tailwind css", icon: "/Tailwind-css.png", percentage: 30 },
+      { name: "React", icon: "/ballsTexture/Html_BallTexture.png",},
+      { name: "Vite", icon: "/ballsTexture/Vite_BallTexture.png",},
+      { name: "Php", icon: "/ballsTexture/JS_BallTexture.png", },
+      { name: "Tailwind css", icon: "/ballsTexture/TailwindCss_BallTexture.png",},
+      { name: "Tailwind css", icon: "/ballsTexture/JS_BallTexture.png",},
     ],
   },
   {
@@ -45,8 +45,8 @@ const projectitems: GridItem[] = [
     className: "col-span-4 row-span-4 col-start-3",
     description: "Proyecto de ejemplo sobre playa.",
     tecnologias: [
-      { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs", percentage: 85 },
-      { name: "React", icon: "https://cdn.simpleicons.org/react", percentage: 15 },
+      { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs"},
+      { name: "React", icon: "https://cdn.simpleicons.org/react"},
     ],
   },
   {
@@ -59,8 +59,8 @@ const projectitems: GridItem[] = [
     className: "col-span-2 row-span-3 col-start-3 row-start-5",
     description: "Proyecto sobre naturaleza.",
     tecnologias: [
-      { name: "Tailwind", icon: "https://cdn.simpleicons.org/tailwindcss", percentage: 60 },
-      { name: "CSS", icon: "https://cdn.simpleicons.org/css3", percentage: 40 },
+      { name: "Tailwind", icon: "https://cdn.simpleicons.org/tailwindcss"},
+      { name: "CSS", icon: "https://cdn.simpleicons.org/css3"},
     ],
   },
   {
@@ -73,8 +73,8 @@ const projectitems: GridItem[] = [
     className: "col-span-2 row-span-3 col-start-5 row-start-5",
     description: "Proyecto urbano.",
     tecnologias: [
-      { name: "Node.js", icon: "https://cdn.simpleicons.org/node.js", percentage: 75 },
-      { name: "Express", icon: "https://cdn.simpleicons.org/express", percentage: 25 },
+      { name: "Node.js", icon: "https://cdn.simpleicons.org/node.js"},
+      { name: "Express", icon: "https://cdn.simpleicons.org/express"},
     ],
   },
   {
@@ -87,8 +87,8 @@ const projectitems: GridItem[] = [
     className: "col-span-3 row-span-3 row-start-8",
     description: "Proyecto en ambiente árido.",
     tecnologias: [
-      { name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb", percentage: 65 },
-      { name: "Node.js", icon: "https://cdn.simpleicons.org/node.js", percentage: 35 },
+      { name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb"},
+      { name: "Node.js", icon: "https://cdn.simpleicons.org/node.js"},
     ],
   },
   {
@@ -101,8 +101,8 @@ const projectitems: GridItem[] = [
     className: "col-span-3 row-span-3 col-start-4 row-start-8",
     description: "Proyecto acuático.",
     tecnologias: [
-      { name: "Firebase", icon: "https://cdn.simpleicons.org/firebase", percentage: 80 },
-      { name: "React", icon: "https://cdn.simpleicons.org/react", percentage: 20 },
+      { name: "Firebase", icon: "https://cdn.simpleicons.org/firebase"},
+      { name: "React", icon: "https://cdn.simpleicons.org/react"},
     ],
   },
 ];

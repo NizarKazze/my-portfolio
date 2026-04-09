@@ -500,9 +500,9 @@ const XConfig = {
   count: 20,
   colors: [0xffffff, 0xffffff],
   images: [
-    "/vite.png",
+    "/ballsTexture/Html_BallTexture.png",
     "/py3.png",
-    "/html.png",
+    "/ballsTexture/Vite_BallTexture.png",
     "/TypeScript.png"
   ],
   ambientColor: 0xffffff,
@@ -753,7 +753,7 @@ class Z extends InstancedMesh {
 
     this.textures.forEach((t, i) => {
       t.colorSpace = SRGBColorSpace;
-      t.flipY = false;
+      t.flipY = true;
 
       t.center.set(0.5, 0.5);
 
@@ -942,7 +942,7 @@ interface BallpitProps {
   [key: string]: any;
 }
 
-const Ballpit: React.FC<BallpitProps> = ({ className = '', followCursor = true, ...props }) => {
+const Ballpit: React.FC<BallpitProps> = ({ className = '', followCursor = true, images = [], ...props }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const spheresInstanceRef = useRef<CreateBallpitReturn | null>(null);
 
@@ -956,6 +956,7 @@ const Ballpit: React.FC<BallpitProps> = ({ className = '', followCursor = true, 
     const init = () => {
       ballpit = createBallpit(canvas, {
         count: props.count ?? 200,
+        images: images,
         gravity: props.gravity,
         friction: props.friction,
         wallBounce: props.wallBounce,
@@ -970,7 +971,7 @@ const Ballpit: React.FC<BallpitProps> = ({ className = '', followCursor = true, 
       cancelAnimationFrame(id);
       ballpit?.dispose?.();
     };
-  }, [props.count, props.gravity, props.friction, props.wallBounce, followCursor]);
+  }, [props.count, props.gravity, props.friction, props.wallBounce, followCursor, images]);
 
   return <canvas className={`${className} w-full h-full`} ref={canvasRef} />;
 };

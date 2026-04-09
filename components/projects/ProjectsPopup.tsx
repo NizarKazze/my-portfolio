@@ -11,7 +11,7 @@ type PopupProps = {
 
 const Popup: React.FC<PopupProps> = ({ item, onClose }) => {
   const { tokens } = useTheme();
-
+  
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
       
@@ -25,13 +25,14 @@ const Popup: React.FC<PopupProps> = ({ item, onClose }) => {
       <div className="relative w-full max-w-8xl h-[95vh] rounded-[40px] shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] border border-white/10 bg-[#080a0f] backdrop-blur-2xl overflow-hidden flex flex-col">
         
         {/* Fondo animado con opacidad reducida para no distraer */}
-        <div className="absolute inset-0 z-0 opacity-40">
+        <div className="absolute inset-0 z-0 opacity-70">
           <Ballpit
-            count={60}
-            gravity={0}
+            count={50}
+            gravity={0.01}
             friction={0.9975}
             wallBounce={0.95}
             followCursor={false}
+            images={item.tecnologias.map(t => t.icon)}
           />
         </div>
 
@@ -82,11 +83,6 @@ const Popup: React.FC<PopupProps> = ({ item, onClose }) => {
               <span>Ver Código</span>
             </a>
           </div>
-        </div>
-
-        {/* Decoración inferior (Opcional, da un toque de acabado) */}
-        <div className="relative z-10 pb-8 text-white/20 text-xs tracking-widest uppercase">
-          Project Details • 2024
         </div>
       </div>
     </div>
