@@ -16,14 +16,17 @@ const IMAGES = [
   "/wordpress.png"
 ];
 
-const CARD_SIZE = 100;
-const CARD_GAP = 20;
+// ✅ Detectar móvil una sola vez al cargar
+const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+
+const CARD_SIZE = isMobile ? 64 : 100;   // ✅ más pequeño en móvil
+const CARD_GAP = isMobile ? 12 : 20;     // ✅ menos separación
 const CARD_STEP = CARD_SIZE + CARD_GAP;
 
-const AMPLITUDE = 48;
+const AMPLITUDE = isMobile ? 28 : 48;    // ✅ ola menos pronunciada
 const WAVE_CARDS = 9;
 
-const AMP2 = 16;
+const AMP2 = isMobile ? 8 : 16;          // ✅ segunda ola también reducida
 const WAVE_CARDS2 = 13;
 
 const TREMOR_AMP = 3;
@@ -85,7 +88,6 @@ function WaveCarousel() {
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
 
-  // Estilos de la card según tema
   const cardStyle = isDark
     ? {
         background: "rgba(177, 158, 239, 0.06)",
@@ -102,7 +104,6 @@ function WaveCarousel() {
         boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
       };
 
-  // Fades laterales según tema
   const fadeLeft = isDark
     ? "linear-gradient(to right, #080a0f 0%, transparent 100%)"
     : "linear-gradient(to right, #ffffff 0%, transparent 100%)";
@@ -119,19 +120,14 @@ function WaveCarousel() {
         paddingBottom: AMPLITUDE + AMP2 + TREMOR_AMP + 24,
       }}
     >
-      {/* Fade izquierdo */}
       <div
         className="absolute left-0 top-0 bottom-0 w-[120px] pointer-events-none z-10"
         style={{ background: fadeLeft }}
       />
-
-      {/* Fade derecho */}
       <div
         className="absolute right-0 top-0 bottom-0 w-[120px] pointer-events-none z-10"
         style={{ background: fadeRight }}
       />
-
-      {/* Track */}
       <div
         ref={trackRef}
         className="flex will-change-transform w-max"
@@ -166,8 +162,9 @@ const SkillsSection = () => {
 
   return (
     <div id="skills-container" className="mt-16">
+      {/* ✅ texto más pequeño en móvil */}
       <h2
-        className="text-center text-5xl"
+        className="text-center text-3xl text-5xl"
         style={{ color: tokens.titleColor }}
       >
         Skills

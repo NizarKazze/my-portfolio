@@ -1,7 +1,8 @@
 "use client";
 
-import { gsap } from 'gsap';
-import { Observer } from 'gsap/Observer';
+import { gsap } from "gsap";
+// @ts-ignore
+import { Observer } from "gsap/Observer";
 import React, { useEffect, useRef } from 'react';
 import {
   ACESFilmicToneMapping,

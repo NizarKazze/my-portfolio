@@ -13,6 +13,7 @@ import InteractivePhone from '@/components/Phone';
 import TechVisualizer from '@/components/projects/3dBallsComponent';
 import { useTheme } from '@/context/ThemeContext';
 import TimelineStepper from '@/components/timeLine/TimeLine';
+import { TIMELINE_POINTS } from '@/components/timeLine/TimeLineData';
 
 const raleway = Raleway({
   subsets: ['latin'],
@@ -34,7 +35,7 @@ const Hero = () => {
   return (
     <div id="hero-content" className="w-full p-2">
       <main id="galaxy-background" className="relative flex w-full flex-col">
-        <div style={{ width: '100%', height: '700px', position: 'relative', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ width: '100%', height: '95vh', position: 'relative', display: 'flex', flexDirection: 'column' }}>
           <MemoGalaxy
             mouseRepulsion
             mouseInteraction
@@ -52,17 +53,18 @@ const Hero = () => {
 
           {/* Texto alineado a la izquierda */}
           <div className="absolute pointer-events-none inset-0 flex flex-col justify-between">
-            <div className="flex flex-col items-start gap-4 px-16 pt-24">
+            <NavBar></NavBar>
+            <div className="flex flex-col items-start gap-4 p-4 sm:px-16 pt-24">
 
               <div>
                 <p
-                  className="text-xl font-medium tracking-widest uppercase"
+                  className="text-lg sm:text-xl font-medium tracking-widest uppercase"
                   style={{ color: tokens.heroTextMuted }}
                 >
                   Hi, I'm
                 </p>
                 <h1
-                  className="text-5xl font-semibold"
+                  className="text-4xl sm:text-5xl font-semibold"
                   style={{ color: tokens.heroText }}
                 >
                   Nizar Kazze
@@ -70,7 +72,7 @@ const Hero = () => {
               </div>
 
               <div
-                className="text-lg leading-relaxed max-w-md"
+                className="text-sm sm:text-lg leading-relaxed max-w-md"
                 style={{ color: tokens.heroTextMuted }}
               >
                 {text}
@@ -106,19 +108,28 @@ const Hero = () => {
 
             {/* Stats bar al fondo */}
             <div
-              className="flex w-full"
+              className="grid w-full grid-cols-2 md:grid-cols-3"
               style={{ borderTop: `1px solid rgba(255,255,255,0.07)` }}
             >
               {[
                 { label: 'Projects', value: 11 },
                 { label: 'Technologies', value: 19 },
                 { label: 'Experience', value: 2 },
+
               ].map((stat, i) => (
                 <div
                   key={stat.label}
-                  className="flex-1 flex flex-col gap-1 px-16 py-5"
+                  className={`
+                    flex flex-col gap-1 px-4 sm:px-8 py-5 md:px-16 
+                    border-rgba(255,255,255,0.07)
+                    ${i % 2 !== 0 ? 'border-l' : 'border-l-0'} 
+                    md:border-l 
+                    ${i >= 2 ? 'border-t md:border-t-0' : ''}
+                    ${i === 0 ? 'md:border-l-0' : ''}
+                  `}
                   style={{
-                    borderLeft: i > 0 ? `1px solid rgba(255,255,255,0.07)` : 'none',
+                    borderLeft: '1px solid rgba(255,255,255,0.07)',
+                    borderTop: i >= 2 ? '1px solid rgba(255,255,255,0.07)' : 'none',
                   }}
                 >
                   <span
@@ -128,7 +139,7 @@ const Hero = () => {
                     {stat.label}
                   </span>
                   <span
-                    className="text-5xl font-medium"
+                    className="text-4xl md:text-5xl font-medium"
                     style={{ color: tokens.heroText }}
                   >
                     {stat.value}
@@ -156,12 +167,11 @@ export default function Home() {
         transition: 'background-color 0.3s ease, color 0.3s ease',
       }}
     >
-      <NavBar />
       <Hero />
       <div style={{ backgroundColor: tokens.bg }}>
         <Aboutme />
       </div>
-      <TimelineStepper></TimelineStepper>
+      <TimelineStepper points={TIMELINE_POINTS}></TimelineStepper>
       <div
         className="skills"
         style={{ backgroundColor: tokens.bg }}
