@@ -33,9 +33,9 @@ const Hero = () => {
   });
 
   return (
-    <div id="hero-content" className="w-full p-2">
+    <div id="hero-content" className="w-full">
       <main id="galaxy-background" className="relative flex w-full flex-col">
-        <div style={{ width: '100%', height: '95vh', position: 'relative', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ width: '100%', height: '90vh', position: 'relative', display: 'flex', flexDirection: 'column' }}>
           <MemoGalaxy
             mouseRepulsion
             mouseInteraction
@@ -52,7 +52,7 @@ const Hero = () => {
           />
 
           {/* Texto alineado a la izquierda */}
-          <div className="absolute pointer-events-none inset-0 flex flex-col justify-between">
+          <div className="absolute pointer-events-none inset-0 flex flex-col justify-between p-2">
             <NavBar></NavBar>
             <div className="flex flex-col items-start gap-4 p-4 sm:px-16 pt-24">
 
@@ -121,16 +121,7 @@ const Hero = () => {
                   key={stat.label}
                   className={`
                     flex flex-col gap-1 px-4 sm:px-8 py-5 md:px-16 
-                    border-rgba(255,255,255,0.07)
-                    ${i % 2 !== 0 ? 'border-l' : 'border-l-0'} 
-                    md:border-l 
-                    ${i >= 2 ? 'border-t md:border-t-0' : ''}
-                    ${i === 0 ? 'md:border-l-0' : ''}
                   `}
-                  style={{
-                    borderLeft: '1px solid rgba(255,255,255,0.07)',
-                    borderTop: i >= 2 ? '1px solid rgba(255,255,255,0.07)' : 'none',
-                  }}
                 >
                   <span
                     className="text-xs uppercase tracking-widest"

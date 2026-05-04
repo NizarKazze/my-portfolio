@@ -16,17 +16,16 @@ const IMAGES = [
   "/wordpress.png"
 ];
 
-// ✅ Detectar móvil una sola vez al cargar
 const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
 
-const CARD_SIZE = isMobile ? 64 : 100;   // ✅ más pequeño en móvil
-const CARD_GAP = isMobile ? 12 : 20;     // ✅ menos separación
+const CARD_SIZE = isMobile ? 64 : 100; 
+const CARD_GAP = isMobile ? 12 : 20;
 const CARD_STEP = CARD_SIZE + CARD_GAP;
 
-const AMPLITUDE = isMobile ? 28 : 48;    // ✅ ola menos pronunciada
+const AMPLITUDE = isMobile ? 28 : 48;
 const WAVE_CARDS = 9;
 
-const AMP2 = isMobile ? 8 : 16;          // ✅ segunda ola también reducida
+const AMP2 = isMobile ? 8 : 16;
 const WAVE_CARDS2 = 13;
 
 const TREMOR_AMP = 3;

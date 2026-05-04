@@ -1,6 +1,8 @@
 export type Technology = {
   name: string;
   icon: string;
+  percentage: number;
+  texture: string;
 };
 
 export type GridItem = {
@@ -28,8 +30,9 @@ const projectitems: GridItem[] = [
     mobileClassName: "col-span-2",
     description: "Desarrollo de una plataforma web para una asociación contra el acoso escolar...",
     tecnologias: [
-      { name: "React", icon: "/ballsTexture/Html_BallTexture.png" },
-      { name: "Vite", icon: "/ballsTexture/Vite_BallTexture.png" },
+      { name: "React", icon: "react.png", texture: "/ballsTexture/Html_BallTexture.png", percentage: 60 },
+      { name: "Vite", icon: "vite.png", texture: "/ballsTexture/Vite_BallTexture.png", percentage: 35 },
+      { name: "PHP", icon: "php.png", texture: "/ballsTexture/Vite_BallTexture.png", percentage: 5 },
     ],
   },
   {
@@ -42,8 +45,9 @@ const projectitems: GridItem[] = [
     className: "md:col-span-4 md:row-span-4 md:col-start-3",
     mobileClassName: "col-span-2",
     description: "Proyecto de ejemplo sobre playa.",
-    tecnologias: [{ name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs" }],
-  },
+    tecnologias: [
+      { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs", texture: "/ballsTexture/Html_BallTexture.png", percentage: 100 },
+    ],  },
   {
     id: 3,
     title: "Bosque",
@@ -54,8 +58,9 @@ const projectitems: GridItem[] = [
     className: "md:col-span-2 md:row-span-3 md:col-start-3 md:row-start-5",
     mobileClassName: "col-span-1",
     description: "Proyecto sobre naturaleza.",
-    tecnologias: [{ name: "Tailwind", icon: "https://cdn.simpleicons.org/tailwindcss" }],
-  },
+    tecnologias: [
+      { name: "Tailwind", icon: "https://cdn.simpleicons.org/tailwindcss", texture: "/ballsTexture/Html_BallTexture.png", percentage: 100 },
+    ],  },
   {
     id: 4,
     title: "Ciudad",
@@ -66,8 +71,9 @@ const projectitems: GridItem[] = [
     className: "md:col-span-2 md:row-span-3 md:col-start-5 md:row-start-5",
     mobileClassName: "col-span-1",
     description: "Proyecto urbano.",
-    tecnologias: [{ name: "Node.js", icon: "https://cdn.simpleicons.org/node.js" }],
-  },
+    tecnologias: [
+      { name: "Node.js", icon: "https://cdn.simpleicons.org/node.js", texture: "/ballsTexture/Html_BallTexture.png", percentage: 100 },
+    ],  },
   {
     id: 5,
     title: "Desierto",
@@ -78,8 +84,9 @@ const projectitems: GridItem[] = [
     className: "md:col-span-3 md:row-span-3 md:row-start-8",
     mobileClassName: "col-span-1",
     description: "Proyecto en ambiente árido.",
-    tecnologias: [{ name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb" }],
-  },
+    tecnologias: [
+      { name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb", texture: "/ballsTexture/Html_BallTexture.png", percentage: 100 },
+    ],  },
   {
     id: 6,
     title: "Lago",
@@ -90,8 +97,9 @@ const projectitems: GridItem[] = [
     className: "md:col-span-3 md:row-span-3 md:col-start-4 md:row-start-8",
     mobileClassName: "col-span-1",
     description: "Proyecto acuático.",
-    tecnologias: [{ name: "Firebase", icon: "https://cdn.simpleicons.org/firebase" }],
-  },
+    tecnologias: [
+      { name: "Firebase", icon: "https://cdn.simpleicons.org/firebase", texture: "/ballsTexture/Html_BallTexture.png", percentage: 100 },
+    ],  },
 ];
 
 export default projectitems;
