@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useTheme } from "@/context/ThemeContext";
 
 const IMAGES = [
-  "/html5.png",
+  "/html.png",
   "/javascript.png",
   "/mysql.png",
   "/nextjs.png",
@@ -13,7 +13,8 @@ const IMAGES = [
   "/typescript.png",
   "/unity.png",
   "/vite.png",
-  "/wordpress.png"
+  "/wordpress.png",
+  "/php.png"
 ];
 
 const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
