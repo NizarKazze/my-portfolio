@@ -47,20 +47,53 @@ const projectitems: GridItem[] = [
     description: "Proyecto de ejemplo sobre playa.",
     tecnologias: [
       { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs", texture: "/ballsTexture/Html_BallTexture.png", percentage: 100 },
-    ],  },
+    ],  
+  },
   {
     id: 3,
-    title: "Bosque",
+    title: "AeonTech",
     img: "aeonTech.png",
-    url: "https://www.acoso-escolar.com/",
-    githubUrl: "https://github.com/tailwindlabs/tailwindcss",
-    liveUrl: "https://tailwindcss.com",
+    url: "https://aeon-tech-xi.vercel.app/",
+    githubUrl: "https://github.com/NizarKazze/aeon-tech",
+    liveUrl: "https://aeon-tech-xi.vercel.app/",
     className: "md:col-span-2 md:row-span-3 md:col-start-3 md:row-start-5",
     mobileClassName: "col-span-1",
-    description: "Proyecto sobre naturaleza.",
+    description:
+      "Web ficticia de presentación para unos auriculares inalámbricos llamados AeonTech. Desarrollada con Next.js y Three.js, incluye modelos 3D interactivos para una experiencia inmersiva de producto.",
+
     tecnologias: [
-      { name: "Tailwind", icon: "https://cdn.simpleicons.org/tailwindcss", texture: "/ballsTexture/Html_BallTexture.png", percentage: 100 },
-    ],  },
+      {
+        name: "Next.js",
+        icon: "https://cdn.simpleicons.org/nextdotjs",
+        texture: "/ballsTexture/Next_BallTexture.png",
+        percentage: 89.1
+      },
+      {
+        name: "TypeScript",
+        icon: "https://cdn.simpleicons.org/typescript",
+        texture: "/ballsTexture/TypeScript_BallTexture.png",
+        percentage: 89.1
+      },
+      {
+        name: "CSS",
+        icon: "https://cdn.simpleicons.org/css",
+        texture: "/ballsTexture/CSS_BallTexture.png",
+        percentage: 9.2
+      },
+      {
+        name: "JavaScript",
+        icon: "https://cdn.simpleicons.org/javascript",
+        texture: "/ballsTexture/JavaScript_BallTexture.png",
+        percentage: 1.7
+      },
+      {
+        name: "Three.js",
+        icon: "https://cdn.simpleicons.org/threedotjs",
+        texture: "/ballsTexture/Three_BallTexture.png",
+        percentage: 0
+      }
+    ]
+  },
   {
     id: 4,
     title: "Ciudad",

@@ -9,11 +9,10 @@ import { Raleway } from 'next/font/google';
 import Aboutme from '@/components/Aboutme';
 import Projects from '@/components/projects/Projects';
 import ContactSection from '@/components/ContactForm';
-import InteractivePhone from '@/components/Phone';
-import TechVisualizer from '@/components/projects/3dBallsComponent';
 import { useTheme } from '@/context/ThemeContext';
 import TimelineStepper from '@/components/timeLine/TimeLine';
 import { TIMELINE_POINTS } from '@/components/timeLine/TimeLineData';
+import { useNearViewport } from '@/hooks/UseNearViewport';
 
 const raleway = Raleway({
   subsets: ['latin'],
@@ -32,28 +31,40 @@ const Hero = () => {
     ],
   });
 
+  // Montar Galaxy 300px antes de que el hero entre en pantalla,
+  // desmontarla cuando esté 600px fuera (para no cortar bruscamente al volver).
+  const [heroRef, isGalaxyVisible] = useNearViewport<HTMLDivElement>({
+    mountMargin: 300,
+    unmountMargin: 600,
+  });
+
   return (
     <div id="hero-content" className="w-full">
       <main id="galaxy-background" className="relative flex w-full flex-col">
-        <div style={{ width: '100%', height: '90vh', position: 'relative', display: 'flex', flexDirection: 'column' }}>
-          <MemoGalaxy
-            mouseRepulsion
-            mouseInteraction
-            density={0.9}
-            glowIntensity={0.2}
-            saturation={0}
-            hueShift={140}
-            twinkleIntensity={0.3}
-            rotationSpeed={0.1}
-            repulsionStrength={2}
-            autoCenterRepulsion={0}
-            starSpeed={0.5}
-            speed={1}
-          />
+        <div
+          ref={heroRef}
+          style={{ width: '100%', height: '90vh', position: 'relative', display: 'flex', flexDirection: 'column' }}
+        >
+          {isGalaxyVisible && (
+            <MemoGalaxy
+              mouseRepulsion
+              mouseInteraction
+              density={0.9}
+              glowIntensity={0.2}
+              saturation={0}
+              hueShift={140}
+              twinkleIntensity={0.3}
+              rotationSpeed={0.1}
+              repulsionStrength={2}
+              autoCenterRepulsion={0}
+              starSpeed={0.5}
+              speed={1}
+            />
+          )}
 
           {/* Texto alineado a la izquierda */}
           <div className="absolute pointer-events-none inset-0 flex flex-col justify-between p-2">
-            <NavBar></NavBar>
+            <NavBar />
             <div className="flex flex-col items-start gap-4 p-4 sm:px-16 pt-24">
 
               <div>
@@ -115,13 +126,10 @@ const Hero = () => {
                 { label: 'Projects', value: 11 },
                 { label: 'Technologies', value: 19 },
                 { label: 'Experience', value: 2 },
-
-              ].map((stat, i) => (
+              ].map((stat) => (
                 <div
                   key={stat.label}
-                  className={`
-                    flex flex-col gap-1 px-4 sm:px-8 py-5 md:px-16 
-                  `}
+                  className="flex flex-col gap-1 px-4 sm:px-8 py-5 md:px-16"
                 >
                   <span
                     className="text-xs uppercase tracking-widest"
@@ -162,11 +170,8 @@ export default function Home() {
       <div style={{ backgroundColor: tokens.bg }}>
         <Aboutme />
       </div>
-      <TimelineStepper points={TIMELINE_POINTS}></TimelineStepper>
-      <div
-        className="skills"
-        style={{ backgroundColor: tokens.bg }}
-      >
+      <TimelineStepper points={TIMELINE_POINTS} />
+      <div className="skills" style={{ backgroundColor: tokens.bg }}>
         <WaveCarousel />
         <Projects />
         <ContactSection />

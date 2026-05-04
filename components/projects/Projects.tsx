@@ -180,7 +180,7 @@ const InfiniteCarousel: React.FC<{ onSelect: (item: GridItem) => void }> = ({
 // ─── Bento Grid (desktop only) ───────────────────────────────────────────────
 
 const BentoGrid: React.FC<{ onSelect: (item: GridItem) => void }> = ({ onSelect }) => (
-  <div className="grid grid-cols-6 grid-rows-10 gap-4 h-[900px]">
+  <div className="grid grid-cols-6 grid-rows-10 gap-4 h-[120vh]">
     {projectitems.map((item) => (
       <div
         key={item.id}
