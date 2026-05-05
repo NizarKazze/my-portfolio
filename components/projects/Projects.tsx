@@ -9,7 +9,7 @@ const InfiniteCarousel: React.FC<{ onSelect: (item: GridItem) => void }> = ({
   onSelect,
 }) => {
   const ITEMS = [...projectitems, ...projectitems];
-  const CARD_WIDTH = 300;
+  const CARD_WIDTH = 320;
   const GAP = 8;
   const STEP = CARD_WIDTH + GAP;
   const SPEED = 0.6; // px per frame
@@ -134,7 +134,7 @@ const InfiniteCarousel: React.FC<{ onSelect: (item: GridItem) => void }> = ({
             }}
             style={{
               width: `${CARD_WIDTH}px`,
-              height: "200px",
+              height: "250px",
               borderRadius: "1rem",
               overflow: "hidden",
               position: "relative",
@@ -162,7 +162,6 @@ const InfiniteCarousel: React.FC<{ onSelect: (item: GridItem) => void }> = ({
               <h2 style={{
                 color: "#fff",
                 padding: "0.9rem 1rem",
-                fontWeight: 700,
                 fontSize: "0.9rem",
                 textShadow: "0 1px 6px rgba(0,0,0,0.7)",
                 margin: 0,
@@ -190,10 +189,10 @@ const BentoGrid: React.FC<{ onSelect: (item: GridItem) => void }> = ({ onSelect 
         <img
           src={`${item.img}?auto=format&fit=crop&w=800`}
           alt={item.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex items-end">
-          <h2 className="text-white p-6 font-bold text-xl drop-shadow-md">
+          <h2 className="text-white p-6 text-xl drop-shadow-md">
             {item.title}
           </h2>
         </div>

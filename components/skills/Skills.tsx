@@ -19,8 +19,8 @@ const IMAGES = [
 
 const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
 
-const CARD_SIZE = isMobile ? 64 : 100; 
-const CARD_GAP = isMobile ? 12 : 20;
+const CARD_SIZE = isMobile ? 44 : 100; 
+const CARD_GAP = isMobile ? 8 : 20;
 const CARD_STEP = CARD_SIZE + CARD_GAP;
 
 const AMPLITUDE = isMobile ? 28 : 48;
