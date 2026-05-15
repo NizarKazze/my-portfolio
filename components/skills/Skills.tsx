@@ -20,10 +20,10 @@ const IMAGES = [
 const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
 
 const CARD_SIZE = isMobile ? 44 : 100; 
-const CARD_GAP = isMobile ? 8 : 20;
+const CARD_GAP = isMobile ? 10 : 20;
 const CARD_STEP = CARD_SIZE + CARD_GAP;
 
-const AMPLITUDE = isMobile ? 28 : 48;
+const AMPLITUDE = isMobile ? 20 : 48;
 const WAVE_CARDS = 9;
 
 const AMP2 = isMobile ? 8 : 16;

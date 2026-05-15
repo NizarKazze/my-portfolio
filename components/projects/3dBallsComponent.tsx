@@ -496,9 +496,8 @@ class Y extends MeshPhysicalMaterial {
   }
 }
 
-// 🔥 FIX: Colores a blanco para evitar que las texturas se multipliquen por negro
 const XConfig = {
-  count: 20,
+  count: 50,
   colors: [0xffffff, 0xffffff],
   images: [
     "/ballsTexture/Html_BallTexture.png",
